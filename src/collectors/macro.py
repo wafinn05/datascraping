@@ -6,6 +6,7 @@ import libsql_client
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(CURRENT_DIR))
+DEFAULT_PERIOD = "1mo" # Ambil sebulan terakhir untuk pembaruan harian
 
 sys.path.append(PROJECT_ROOT)
 from src.database.connection import get_db_connection
@@ -17,7 +18,7 @@ MACRO_TICKERS = {
     "CL=F": "oil_price"
 }
 
-def collect_macro(period="10y"):
+def collect_macro(period=DEFAULT_PERIOD):
     print(f"Fetching Macro Data (period={period})...")
     
     dfs = []

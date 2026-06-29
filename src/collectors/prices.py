@@ -15,7 +15,7 @@ CONFIG_DIR = os.path.join(PROJECT_ROOT, "config")
 sys.path.append(PROJECT_ROOT)
 from src.database.connection import get_db_connection
 
-DEFAULT_PERIOD = "10y" # Fetch full history
+DEFAULT_PERIOD = "1mo" # Ambil sebulan terakhir untuk scraping harian
 REQUEST_DELAY = 1.0 
 
 # UTILS
