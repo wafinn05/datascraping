@@ -25,7 +25,16 @@ def load_tickers(region="indonesia"):
         return []
     with open(path, "r") as f:
         data = json.load(f)
-    return data.get(region, [])
+    tickers = [t["ticker"] if isinstance(t, dict) else t for t in data.get("indonesia", [])]
+    
+    # Parallel Chunking
+    chunk_index = int(os.environ.get("CHUNK_INDEX", "0"))
+    num_chunks = int(os.environ.get("NUM_CHUNKS", "1"))
+    if num_chunks > 1:
+        import numpy as np
+        tickers = np.array_split(tickers, num_chunks)[chunk_index].tolist()
+        print(f"Robot {chunk_index+1}/{num_chunks} mengerjakan {len(tickers)} saham.")
+    return tickers
 
 # CORE LOGIC
 def fetch_and_store(ticker: str, period: str = DEFAULT_PERIOD):

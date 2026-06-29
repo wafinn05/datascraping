@@ -53,8 +53,20 @@ def collect_sentiment(target_ticker=None):
     ticker_map = {}
     if os.path.exists(CONFIG_PATH):
         with open(CONFIG_PATH, "r") as f:
-            ticker_config = json.load(f)
-        ticker_map = {item["ticker"]: item["name"] for item in ticker_config.get("indonesia", [])}
+            data = json.load(f)
+        all_tickers = data.get("indonesia", [])
+        tickers = [t["ticker"] if isinstance(t, dict) else t for t in all_tickers]
+        
+        # Parallel Chunking
+        chunk_index = int(os.environ.get("CHUNK_INDEX", "0"))
+        num_chunks = int(os.environ.get("NUM_CHUNKS", "1"))
+        if num_chunks > 1:
+            import numpy as np
+            tickers = np.array_split(tickers, num_chunks)[chunk_index].tolist()
+            print(f"Robot {chunk_index+1}/{num_chunks} mengerjakan {len(tickers)} saham.")
+            
+        for t in tickers:
+            ticker_map[t] = t
     
     if target_ticker:
         stocks = [target_ticker]

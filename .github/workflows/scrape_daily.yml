@@ -9,6 +9,10 @@ on:
 jobs:
   scrape_and_process:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chunk: [0, 1, 2, 3, 4]
+      fail-fast: false # Biarkan job lain tetap jalan jika satu gagal
 
     steps:
       - name: Checkout Repository
@@ -44,5 +48,7 @@ jobs:
         env:
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          CHUNK_INDEX: ${{ matrix.chunk }}
+          NUM_CHUNKS: 5
         run: |
           python run_all.py

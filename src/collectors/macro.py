@@ -19,6 +19,11 @@ MACRO_TICKERS = {
 }
 
 def collect_macro(period=DEFAULT_PERIOD):
+    chunk_index = int(os.environ.get("CHUNK_INDEX", "0"))
+    if chunk_index != 0:
+        print("Skipping macro data collection for non-zero chunk.")
+        return
+        
     print(f"Fetching Macro Data (period={period})...")
     
     dfs = []
