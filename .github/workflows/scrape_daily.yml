@@ -42,7 +42,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas yfinance feedparser libsql-client numpy torch transformers python-dotenv
+          pip install pandas yfinance feedparser libsql-client numpy torch transformers python-dotenv scipy
 
       - name: Run Scraping and Feature Engineering
         env:
