@@ -15,7 +15,7 @@ CONFIG_DIR = os.path.join(PROJECT_ROOT, "config")
 sys.path.append(PROJECT_ROOT)
 from src.database.connection import get_db_connection
 
-DEFAULT_PERIOD = "1mo" # Ambil sebulan terakhir untuk scraping harian
+DEFAULT_PERIOD = "6mo" # Ambil 6 bulan terakhir (sekitar 126 hari kerja) untuk perhitungan indikator teknikal
 REQUEST_DELAY = 1.0 
 
 # UTILS

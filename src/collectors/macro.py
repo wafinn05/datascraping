@@ -6,7 +6,7 @@ import libsql_client
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(CURRENT_DIR))
-DEFAULT_PERIOD = "1mo" # Ambil sebulan terakhir untuk pembaruan harian
+DEFAULT_PERIOD = "6mo" # Ambil 6 bulan terakhir untuk perhitungan indikator teknikal
 
 sys.path.append(PROJECT_ROOT)
 from src.database.connection import get_db_connection
