@@ -1,4 +1,10 @@
+import os
+
 def init_tables(client):
+    chunk_index = int(os.environ.get("CHUNK_INDEX", "0"))
+    if chunk_index != 0:
+        return # Hanya Robot 0 yang boleh membuat tabel agar tidak bentrok
+        
     print("[DB] Menginisialisasi Skema Tabel...")
     
     queries = [
@@ -54,10 +60,7 @@ def init_tables(client):
         )
         """,
         """
-        DROP TABLE IF EXISTS main_dataset;
-        """,
-        """
-        CREATE TABLE main_dataset (
+        CREATE TABLE IF NOT EXISTS main_dataset (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT NOT NULL,
             ticker TEXT NOT NULL,
