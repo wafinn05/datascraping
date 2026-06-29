@@ -32,7 +32,7 @@ class FundamentalCollector:
             return yaml.safe_load(f)
 
     def load_tickers(self, market: str) -> list[str]:
-        path = os.path.join(os.path.dirname(PROJECT_ROOT), "config", "tickers.json")
+        path = os.path.join(PROJECT_ROOT, "config", "tickers.json")
         if not os.path.exists(path):
             raise FileNotFoundError("tickers.json not found")
         with open(path, "r") as f:
