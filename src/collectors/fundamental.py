@@ -25,7 +25,7 @@ class FundamentalCollector:
     def _load_config(self) -> Dict[str, Any]:
         import yaml
         # Config is in main project
-        path = os.path.join(os.path.dirname(PROJECT_ROOT), "config", "settings.yaml")
+        path = os.path.join(PROJECT_ROOT, "config", "settings.yaml")
         if not os.path.exists(path):
             raise FileNotFoundError("settings.yaml not found")
         with open(path, "r") as f:

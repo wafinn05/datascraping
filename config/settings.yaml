@@ -1,0 +1,28 @@
+data_collection:
+  years_back: 3
+  request_delay: 1.5
+
+fundamental:
+  quarterly:
+    revenue_key: "Total Revenue"
+    net_profit_key: "Net Income"
+    eps_key: "Diluted EPS"
+    assets_key: "Total Assets"
+    liabilities_key: "Total Liabilities Net Minority Interest"
+
+features:
+  technical:
+    moving_averages: [5, 10, 20, 50, 200]
+    rsi_period: 14
+    macd_fast: 12
+    macd_slow: 26
+    macd_signal: 9
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  models: "models"
+  logs: "data/logs"
+
+logging:
+  level: "INFO"
