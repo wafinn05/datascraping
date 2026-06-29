@@ -48,8 +48,7 @@ def get_sentiment_score(text):
 def collect_sentiment(target_ticker=None):
     print(f"Collecting Sentiment...")
     
-    # Load Tickers Config
-    CONFIG_PATH = os.path.join(os.path.dirname(PROJECT_ROOT), "config", "tickers.json")
+    CONFIG_PATH = os.path.join(PROJECT_ROOT, "config", "tickers.json")
     
     ticker_map = {}
     if os.path.exists(CONFIG_PATH):

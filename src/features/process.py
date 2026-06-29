@@ -161,7 +161,7 @@ def process_features(ticker: Optional[str] = None):
         tickers = [ticker]
     else:
         import json
-        config_path = os.path.join(os.path.dirname(PROJECT_ROOT), "config", "tickers.json")
+        config_path = os.path.join(PROJECT_ROOT, "config", "tickers.json")
         with open(config_path, "r") as f:
             data = json.load(f)
         tickers = [t["ticker"] if isinstance(t, dict) else t for t in data.get("indonesia", [])]

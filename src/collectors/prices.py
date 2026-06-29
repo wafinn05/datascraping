@@ -10,7 +10,7 @@ import libsql_client
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # PROJECT_ROOT is ScrapingClone
 PROJECT_ROOT = os.path.dirname(os.path.dirname(CURRENT_DIR))
-CONFIG_DIR = os.path.join(os.path.dirname(PROJECT_ROOT), "config") # Config is in the main project
+CONFIG_DIR = os.path.join(PROJECT_ROOT, "config")
 
 sys.path.append(PROJECT_ROOT)
 from src.database.connection import get_db_connection
